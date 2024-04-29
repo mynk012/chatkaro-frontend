@@ -1,9 +1,11 @@
-import { Grid } from "@mui/material";
+import { Card, Grid } from "@mui/material";
 import React from 'react'
+import Login from "./Login";
+import Register from "./Register";
 
 const Authentication = () => {
   return (
-    <div>   
+    <div className="">   
       <Grid container>        
         <Grid className="h-screen overflow-hidden" item xs={7}>      {/* we have 12 grid by default */}
           <img
@@ -14,15 +16,19 @@ const Authentication = () => {
         </Grid>
         <Grid item xs={5}>
           <div className="px-20 flex flex-col justify-center h-full">
-            <div className="card p-8">
+            <Card className="card p-8">
               <div className="flex flex-col items-center mb-5 space-y-1">
-                <h1 className="logo text-center ">Zosh Social</h1>
+                <h1 className="logo text-center">talkSmart social web-site</h1>
                 <p className="text-center text-sm w-[70%]">
                   Connecting Lives, Sharing Stories: Your Social World, Your Way
                 </p>
               </div>
-            </div>
+
+              {/* <Login/> */}
+              <Register/>
+            </Card>
           </div>
+
         </Grid>
       </Grid>
     
