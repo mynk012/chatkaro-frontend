@@ -8,6 +8,8 @@ import {
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
+import { registerUserAction } from "../../Redux/Auth/auth.action";
+import { useDispatch } from "react-redux";
 
 const initialValues = {
   firstName: "",
@@ -28,11 +30,18 @@ const validationSchema = {
 
 const Register = () => {
   const[gender, setGender] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
     values.gender= gender
     console.log(values);
+    dispatch(registerUserAction({data:values}))
   };
+
+  const handleChange = (event) =>{
+    setGender(event.target.value);
+  };
+  
   return (
     <div>
       <Formik
@@ -102,7 +111,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <RadioGroup row name="gender" aria-label="gender">
+              <RadioGroup onChange={handleChange} row name="gender" aria-label="gender">
                 <FormControlLabel
                   value="male"
                   control={<Radio />}
